@@ -1,4 +1,5 @@
 const SimpleStorage = artifacts.require("./SimpleStorage.sol")
+import expectThrow from './helpers/expectThrow';
 
 contract('SimpleStorage', (accounts) => {
   let simpleStorage;
