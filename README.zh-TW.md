@@ -2,25 +2,29 @@
 
 Truffle + React + Babel + Webpack
 
-[中文 README](README.zh-TW.md)
-
 ## Getting Started
 
-install npm and [truffle](https://github.com/trufflesuite/truffle) `npm install -g truffle`
-
-install yarn (not required)
+安裝 npm 和 [truffle](https://github.com/trufflesuite/truffle) `npm install -g truffle`
 
 ```
 git clone https://github.com/wayne5540/truffle-react-boilerplate.git my-project
 cd my-project
-yarn install
+npm install
 ```
 
-Running client:
+### 開啟 Client:
 
-install [testrpc](https://github.com/ethereumjs/testrpc) `npm install -g ethereumjs-testrpc`
+* 安裝本地 test 用的 blockchain
 
-Install [metamask](https://metamask.io/)(Chrome) or [mist](https://github.com/ethereum/mist/releases)
+[testrpc](https://github.com/ethereumjs/testrpc) `npm install -g ethereumjs-testrpc`
+
+* 安裝瀏覽器錢包：
+
+[metamask](https://metamask.io/)(Chrome) 或是 [mist](https://github.com/ethereum/mist/releases)
+
+* 錢包安裝完後把錢包 Server 換成 local 的 server，通常是 8545 port
+
+* 然後運行：
 
 ```
 testrpc
@@ -29,11 +33,10 @@ truffle migrate
 yarn start
 ```
 
-Switch your wallet using local node 8545 port
+瀏覽器會自動打開 `localhost:8080` 就可以看到 Client 了
 
-Go to `localhost:8080` and play around
 
-### Interact your deployed contract with truffle console
+### 在 Truffle console 內操作 Contract 
 
 Example
 
@@ -57,11 +60,11 @@ truffle test
 
 ## Trouble Shooting
 
-### I don't have eth in my wallet
+### 錢包沒錢怎麼辦？
 
-**under testrpc (local node)**
+**在 testrpc 情況下 (local node)**
 
-run those commands, it will send 2 ether to your test wallet
+進 console 操作錢包打錢到瀏覽器的錢包（Metamask or Mist）
 
 ```
 truffle console
@@ -69,14 +72,15 @@ truffle console
 web3.eth.sendTransaction({from: web3.eth.accounts[2], to: 'YOUR_ETH_ADDRESS', value: web3.toWei(2, "ether")})
 ```
 
-**under ropsten testnet**
+**在 ropsten testnet 的情況下**
 
-Go to http://faucet.ropsten.be:3001/ and get some eth to your address
+到 http://faucet.ropsten.be:3001/ 要一點錢就行了
 
 
 ## Deployment
 
-Since this project use Ethereum as "database", you can deploy contract to testnet or main chain at your local, and serve client code into any web server.
+* Client: 任何可以 serve static file 的地方都可以 depoly client
+* Contract: 任何有 sync 全節點的地方
 
 ### Deploy to testnet (or Main chain)
 
